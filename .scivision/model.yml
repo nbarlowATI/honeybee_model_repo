@@ -1,0 +1,8 @@
+name: honeybee_model
+url: https://github.com/nbarlowATI/honeybee_model_repo
+import: honeybee_model_repo
+model: efficientNetB3
+prediction_fn:
+    call: predict
+    args:
+        X: image
