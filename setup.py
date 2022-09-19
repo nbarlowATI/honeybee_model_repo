@@ -9,7 +9,7 @@ with open("requirements.txt") as f:
             requirements.append(stripped)
 
 setup(
-    name="efficientnetB3_honeybee",
+    name="honeybee_model_repo",
     version="0.0.1",
     description="scivision plugin, using EfficientNetB3 model",
     url="https://github.com/nbarlowATI/honeybee_model_repo",
