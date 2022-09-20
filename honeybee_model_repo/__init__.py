@@ -1,1 +1,1 @@
-from .model import efficentNetB3
+from .model import efficientNetB3
