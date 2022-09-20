@@ -4,4 +4,3 @@ pandas
 seaborn
 opencv-python
 sklearn
-tensorflow
