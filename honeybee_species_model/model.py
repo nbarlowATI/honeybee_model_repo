@@ -5,14 +5,10 @@ from skimage.transform import resize
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.models import Model
-from tensorflow.keras.applications.imagenet_utils import decode_predictions
-# pprevent annoying tensorflow warning
-
+# prevent annoying tensorflow warning
 import logging
 logging.getLogger("tensorflow").setLevel(logging.ERROR)
 import warnings
-#pd.set_option('max_columns', None)
-#pd.set_option('max_rows', 90)
 warnings.simplefilter("ignore")
 
 CLASS_LABELS = [
@@ -25,31 +21,49 @@ CLASS_LABELS = [
     "Western honey bee"
 ]
 
-class efficientNetB3:
-    def __init__(self):
-       # model_path = os.path.join(os.path.dirname(__file__),'bees_95.55.h5')
-        filename = "bees_95.55.h5"
-        if not os.path.exists(filename):
-            model_path = os.path.join("https://connectionsworkshop.blob.core.windows.net/honeybees", filename)
-            r = requests.get(model_path)
-            with open(filename, "wb") as outfile:
-                outfile.write(r.content)
-        self.model = tf.keras.models.load_model(filename)
+def load_model_with_weights(url):
+    ### TODO ####
+    ### Need to download the weights file from url, if it's not already
+    ### present, and put the downloaded filename into a variable
+    ### called weights_filename
+    model = tf.keras.models.load_model(weights_filename)
+    return model
 
+def preprocess_image(image):
+    """
+    Ensure that an input image is the correct size, and
+    has the expected shape, to be used by the predict function
 
-    def predict(self, image: np.ndarray):
-        image = resize(image, (70, 70),
+    parameters
+    ----------
+    image: np.ndarray, shape(npix_x,npix_y,3)
+
+    returns
+    -------
+    image: np.ndarray, shape(None, 70, 70, 3)
+    """
+    image = resize(image, (70, 70),
                    preserve_range=True,
                    anti_aliasing=True)
-        image = np.expand_dims(image, 0)
+    image = np.expand_dims(image, 0)
+    return image
+
+
+
+class efficientNetB3:
+    ### TODO ####
+    ### Add a constructor to this class that calls the function
+    ### to download the model weights, load the model, and assign
+    ### to self.model
+
+    def predict(self, image: np.ndarray):
         result = self.model.predict(image)
-        # find the highest weight, and corresponding class name and index
-        max_index = 0
-        max_result = ""
-        max_weight = 0.
-        for i, weight in enumerate(result[0]):
-            if weight > max_weight:
-                max_weight = weight
-                max_result = CLASS_LABELS[i]
-                max_index = i
-        return "{}: {:.2f}%".format(max_result, max_weight*100)
+        ### TODO ####
+        ### Find the highest weight, and, using the list of CLASS_LABELS
+        ### get the corresponding class name.
+        return "FIXME"
+
+
+
+if __name__ == "__main__":
+    pass
