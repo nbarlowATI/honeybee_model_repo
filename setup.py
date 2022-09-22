@@ -9,11 +9,11 @@ with open("requirements.txt") as f:
             requirements.append(stripped)
 
 setup(
-    name="honeybee_model_repo",
+    name="honeybee_species_model",
     version="0.0.1",
     description="scivision plugin, using EfficientNetB3 model",
-    url="https://github.com/nbarlowATI/honeybee_model_repo",
+    url="https://github.com/nbarlowATI/honeybee_species_model",
     packages=find_packages(),
     install_requires=requirements,
-    python_requires=">=3.8",
+    python_requires=">=3.7",
 )
