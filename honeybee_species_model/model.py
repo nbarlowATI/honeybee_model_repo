@@ -5,14 +5,11 @@ from skimage.transform import resize
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.models import Model
-from tensorflow.keras.applications.imagenet_utils import decode_predictions
-# pprevent annoying tensorflow warning
+# prevent annoying tensorflow warning
 
 import logging
 logging.getLogger("tensorflow").setLevel(logging.ERROR)
 import warnings
-#pd.set_option('max_columns', None)
-#pd.set_option('max_rows', 90)
 warnings.simplefilter("ignore")
 
 CLASS_LABELS = [
