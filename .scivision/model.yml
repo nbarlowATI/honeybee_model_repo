@@ -1,6 +1,6 @@
 name: honeybee_model
-url: https://github.com/nbarlowATI/honeybee_model_repo
-import: honeybee_model_repo
+url: https://github.com/nbarlowATI/honeybee_species_model
+import: honeybee_species_model
 model: efficientNetB3
 prediction_fn:
     call: predict
